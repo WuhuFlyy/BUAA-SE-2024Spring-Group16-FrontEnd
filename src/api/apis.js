@@ -48,7 +48,14 @@ export const checkProductCollected = params => http.fetchPost('/favorite/isFavor
 
 // Get shop details
 export const getShopDetail = params => http.fetchPost('/shop/shop_info', params);
-
 // Get shop product list
 export const getShopProducts = params => http.fetchPost('/shop/get_products', params);
+// Get cart product list
+export const getCartList =params => http.fetchPost('/cart/get_list',params);
+// Get address list
+export const getAddress = params => http.fetchPost('/address/get_address',params);
+// add address
+export const addAddress = params => http.fetchPost('/address/add_address',params);
+// delay address
+export const delayAddress =params => http.fetchPost('/address/delay_address',params); 
 
