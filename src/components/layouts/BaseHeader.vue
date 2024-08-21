@@ -9,14 +9,19 @@
       <el-menu-item index="1" @click="gotoSearch">搜索</el-menu-item>
       <el-sub-menu index="2">
         <template #title>个人信息</template>
-        <el-menu-item index="2-1" @click="gotoAddress()">收货地址</el-menu-item>
+        <el-menu-item index="2-1">收货地址</el-menu-item>
         <el-menu-item index="2-2">基本信息</el-menu-item>
         <el-menu-item index="2-3">收藏商品</el-menu-item>
         <el-menu-item index="2-4">关注店铺</el-menu-item>
       </el-sub-menu>
-      <el-menu-item index="3" @click="gotoCart()">购物车</el-menu-item>
+      <el-menu-item index="3">购物车</el-menu-item>
       <el-menu-item index="4" v-if="!isLogined" @click="gotoLoginPage">注册/登录</el-menu-item>
       <el-menu-item index="4" v-if="isLogined" @click="signOut">退出登录</el-menu-item>
+      <el-sub-menu index="5" v-show="$route.name == 'Goodslist' || $route.name == 'AddGoods' || $route.name == 'EditGoods'">
+        <template #title>我的商店</template>
+        <el-menu-item @click="gotoGoodsList" index="5-1">商品列表</el-menu-item>
+        <el-menu-item @click="gotoAddGoods" index="5-2">上架商品</el-menu-item>
+      </el-sub-menu>
       <el-menu-item h="full" @click="toggleDark()">
         <button class="border-none w-full bg-transparent cursor-pointer" style="height: var(--ep-menu-item-height)">
           <i inline-flex i="dark:ep-moon ep-sunny" />
@@ -61,12 +66,16 @@ export default {
     gotoHomePage() {
       this.$router.push({ path: '/' });
     },
+    gotoGoodsList() {
+      this.$router.push({ path: "/Seller/GoodsList"});
+    },
+    gotoAddGoods() {
+      this.$router.push({ path: "/Seller/AddGoods"});
+    },
     gotoSearch() {
       this.isSearch = true;
     },
-    gotoAddress(){
-      this.$router.push({path:'/address'})
-    },
+    
     searchByKeywords() {
       if (this.keyword !== '') {
         this.$router.push({path: `/Search/${this.keyword}`});
@@ -79,9 +88,6 @@ export default {
     },
     toggleDark,
     markRaw,
-    gotoCart(){
-      this.$router.push({path:'/cart'})
-    }
   }
 }
 </script>

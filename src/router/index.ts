@@ -57,7 +57,7 @@ const routes = [
     component: () => import("../views/Seller/AddGoods.vue")
   },
   {
-    path: '/Seller/EditGoods',
+    path: '/Seller/EditGoods/:goodsId',
     name: 'EditGoods',
     component: () => import("../views/Seller/EditGoods.vue")
   },
