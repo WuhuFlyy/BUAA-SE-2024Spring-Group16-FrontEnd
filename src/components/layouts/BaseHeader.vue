@@ -16,7 +16,7 @@
       </el-sub-menu>
       <el-menu-item index="3" @click="gotoCart()">购物车</el-menu-item>
       <el-menu-item index="4" v-if="!isLogined" @click="gotoLoginPage">注册/登录</el-menu-item>
-      <el-menu-item index="4" v-if="isLogined">退出登录</el-menu-item>
+      <el-menu-item index="4" v-if="isLogined" @click="signOut">退出登录</el-menu-item>
       <el-menu-item h="full" @click="toggleDark()">
         <button class="border-none w-full bg-transparent cursor-pointer" style="height: var(--ep-menu-item-height)">
           <i inline-flex i="dark:ep-moon ep-sunny" />
@@ -71,6 +71,11 @@ export default {
       if (this.keyword !== '') {
         this.$router.push({path: `/Search/${this.keyword}`});
       }
+    },
+    signOut() {
+      localStorage.removeItem['loginUserName'];
+      localStorage.removeItem['loginUserType'];
+      this.$router.replace({path: '/login'})
     },
     toggleDark,
     markRaw,
