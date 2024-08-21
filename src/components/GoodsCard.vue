@@ -12,7 +12,9 @@
           <el-button @click="openProduct(msg.productId)" style="margin: 0 20px" type="primary"
             size="small">查看详情</el-button>
           <el-button style="margin: 0 20px" size="small" @btnClick="addCart(msg.productId)"
-            type="info">加入购物车</el-button>
+            type="info" v-show="$route.name != 'Goodslist'">加入购物车</el-button>
+          <el-button @click="editProduct(msg.productId)" style="margin: 0 20px" type="primary" 
+            size="small" v-show="$route.name == 'Goodslist'">编辑商品</el-button>
         </div>
         <p><span style="font-size:14px">￥</span>{{ Number(msg.salePrice).toFixed(2) }}</p>
       </div>
@@ -52,6 +54,10 @@ export default {
     openProduct(id) {
       this.goodsDetails(id);
       // window.open('//' + window.location.host + '/goodsDetail?productId=' + id)
+    },
+    editProduct(id) {
+      console.log(this.$route);
+      this.$router.push(`/Seller/EditGoods/${id}`);
     },
     addToCartRequest(id) {
       this.getGoodsDetailRequest(id);
@@ -149,5 +155,8 @@ export default {
     text-align: center;
     overflow: hidden;
   }
+  #edit-product {
+  float: right;
+}
 }
 </style>
