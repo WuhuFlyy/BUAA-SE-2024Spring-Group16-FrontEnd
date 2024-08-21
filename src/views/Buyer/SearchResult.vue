@@ -113,7 +113,7 @@ export default {
 				}
 			];
 			searchGoods({keywords: keywords}).then(res => {
-				if (res.status === '200') {
+				if (res.status == '200') {
 					this.goods = res.data;
 				} else {
 					if (res.statusText) {

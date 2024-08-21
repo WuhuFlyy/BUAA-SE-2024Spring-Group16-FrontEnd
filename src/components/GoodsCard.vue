@@ -33,10 +33,10 @@ export default {
   data() {
     return {
       ElMessage,
-      buyInfo = {
-        pid,
-        userName,
-        version,
+      buyInfo: {
+        pid: -1,
+        userName: '',
+        version: '',
         quantity: 1,
       },
     }
@@ -60,12 +60,12 @@ export default {
       this.buyInfo.userName = localStorage.getItem['loginUserName'];
       if (this.buyInfo.version) {
         addToCart(this.buyInfo).then(res => {
-          if (res.status === '200') {
+          if (res.status == '200') {
             ElMessage.success('加入购物车成功');
           } else {
             this.buyInfo.version = null;
             if (res.statusText) {
-              ElMessage.error(res.statusText);
+              ElMessage.error(res.statusText + ' Status: ' + res.status);
             } else {
               ElMessage.error('未知错误, Status: ' + res.status);
             }
@@ -77,12 +77,12 @@ export default {
       console.log(pid);
 
       getGoodsDetail({ id: pid }).then(res => {
-        if (res.status === '200') {
+        if (res.status == '200') {
           this.buyInfo.version = res.data.version[0];
         } else {
           this.buyInfo.version = null;
           if (res.statusText) {
-            ElMessage.error(res.statusText);
+            ElMessage.error(res.statusText + ' Status: ' + res.status);
           } else {
             ElMessage.error('未知错误, Status: ' + res.status);
 

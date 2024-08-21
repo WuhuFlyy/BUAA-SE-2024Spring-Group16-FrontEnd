@@ -73,8 +73,9 @@ export default {
     checkShopSubscribed,
     getShopInfo() {
       this.shop.shopId = this.$route.params.shopId;
-      console.log(this.shop.params.shopId);
+      console.log(this.shop.shopId);
       this.shop = {
+        shopId: -1,
         shopName: 'Bemani Sound Team',
         shopSubsciberCount: 1000,
         shopSaleCount: 2000,
@@ -96,7 +97,7 @@ export default {
     },
     getShopProductsRequest() {
       this.shop.shopId = this.$route.params.shopId;
-      console.log(this.shop.params.shopId);
+      console.log(this.shop.shopId);
 
       this.goods = [
         {
@@ -149,7 +150,7 @@ export default {
     },
     subscribeShopRequest() {
 			subscribeShop({ userName: localStorage.getItem['loginUserName'], sid: this.goods.shopId }).then(res => {
-				if (res.status === '200') {
+				if (res.status == '200') {
 					ElMessage.success('关注店铺成功');
 				} else {
 					if (res.statusText) {
@@ -164,7 +165,7 @@ export default {
 		},
 		cancelSubscribingShopRequest() {
 			cancelSubscribingShop({ userName: localStorage.getItem['loginUserName'], sid: this.goods.shopId }).then(res => {
-				if (res.status === '200') {
+				if (res.status == '200') {
 					ElMessage.success('取消关注店铺成功');
 				} else {
 					if (res.statusText) {
@@ -178,7 +179,7 @@ export default {
 		},
     checkShopSubscribedRequest() {
 			checkShopSubscribed({ userName: localStorage.getItem['loginUserName'], sid: this.goods.shopId }).then(res => {
-				if (res.status === '200') {
+				if (res.status == '200') {
 					this.shopSubscribed = res.data;
 				} else {
 					if (res.statusText) {
