@@ -56,7 +56,7 @@
 					<el-col :span="12">
 						<button class="btn" @click="buyImmediatelyRequest">
 							<span class="price">{{ goods.price }} RMB</span>
-							<span class="buy">立即购买</span>
+							<span class="buy" @click="checkout">立即购买</span>
 						</button>
 					</el-col>
 					<el-col :span="12">
@@ -206,6 +206,10 @@ export default {
 				}
 			});
 		},
+		checkout() {  
+        alert('正在结算...');  
+        // 结算逻辑待补充
+      	},
 		clickToShop() {
 			this.$router.push({ path: `/shopDetail/${this.goods.shopId}` })
 		},
