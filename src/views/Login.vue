@@ -41,7 +41,7 @@ export default {
       dataForm: {
         userName: '',
         password: '',
-        userType: '',
+        userType: 'buyer',
       },
       dataRule: {
         userName: [
@@ -59,6 +59,12 @@ export default {
     // 提交表单
     userLogin,
     dataFormSubmit() {
+      console.log(this.dataForm.userType);
+      // if (this.dataForm.userType == 'buyer') {
+      //   this.$router.push({ path: '/' });
+      // } else {
+      //   this.$router.push({ path: '/Seller/Goodslist' });
+      // }
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           userLogin(this.dataForm).then(res => {
@@ -67,7 +73,11 @@ export default {
               localStorage.setItem['loginUserName'] = this.dataForm.userName;
               localStorage.setItem['loginUserType'] = this.dataForm.userType;
               ElMessage.success('登录成功');
-              this.$router.push({ path: '/' })
+              if (this.dataForm.userType == 'buyer') {
+                this.$router.push({ path: '/' });
+              } else {
+                this.$router.push({ path: '/Seller/Goodslist' });
+              }
             } else {
               if (res.statusText) {
                 ElMessage.error(res.statusText);
