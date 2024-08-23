@@ -77,19 +77,19 @@ export default {
 				},
 			];
 
-			// getAllGoods().then((res) => {
-			// 	console.log(res);
-			// 	if (res.status == '200') {
-			// 		this.goods = res.data
-			// 	} else {
-			// 		if (res.statusText) {
-			// 			ElMessage.error(res.statusText + ' Status: ' + res.status);
-			// 		} else {
-			// 			ElMessage.error('未知错误, Status: ' + res.status);
+			getAllGoods().then((res) => {
+				console.log(res);
+				if (res.status == '200') {
+					this.goods = res.data
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText + ' Status: ' + res.status);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
 
-			// 		}
-			// 	}
-			// });
+					}
+				}
+			});
 		}
 	},
 	mounted() {
