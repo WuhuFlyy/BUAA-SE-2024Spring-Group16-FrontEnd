@@ -21,13 +21,12 @@ pipeline {
                 script {
                     // 构建 Docker 镜像 
                     sh '''
-                    kubectl apply -f deployment_frontend.yaml
-                    kubectl delete -f deployment_frontend.yaml
+
+                    kubectl delete -f deployment_frontend.yaml || true
                     docker rmi group16-frontend:latest || true
-                    kubectl apply -f deployment_frontend.yaml
                     docker build --no-cache -t group16-frontend:latest .
-                    kubectl set image deployment/group16-frontend-deployment frontend-container=frontend-container --record
-                    kubectl rollout restart deployment/group16-frontend-deployment'''
+                    kubectl apply -f deployment_frontend.yaml
+                    '''
                 }
             }
         }
