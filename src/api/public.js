@@ -3,8 +3,8 @@ import axios from 'axios'
 console.log('NODE_ENV', process.env.NODE_ENV);
 const env = process.env.NODE_ENV;
 const urlEnv = {
-  development: 'http://localhost:8080',
-  production: 'http://mall-service:8080'
+  development: 'http://localhost:8888',
+  production: 'http://mall-service:8888'
 };
 
 const BASE_URL = urlEnv[env];
