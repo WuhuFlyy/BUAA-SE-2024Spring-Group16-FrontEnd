@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     // 构建 Docker 镜像 
-                    sh '''docker build -t group16-frontend:latest .
+                    sh '''docker build --no-cache -t group16-frontend:latest .
                     kubectl set image deployment/group16-frontend-deployment frontend-container=frontend-container --record
                     kubectl rollout restart deployment/group16-frontend-deployment'''
                 }
