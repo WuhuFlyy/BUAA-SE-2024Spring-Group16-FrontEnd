@@ -21,7 +21,7 @@ pipeline {
                 script {
                     // 构建 Docker 镜像 
                     sh '''
-                    kubectl delete deployment -f deployment_frontend.yaml
+                    kubectl delete deployment -f deployment_frontend.yaml --ignore-not-found
                     docker rmi group16-frontend:latest
                     kubectl apply deployment -f deployment_frontend.yaml
                     docker build --no-cache -t group16-frontend:latest .
