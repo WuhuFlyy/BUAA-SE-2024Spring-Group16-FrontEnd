@@ -24,7 +24,7 @@ pipeline {
 
                     kubectl delete -f deployment_frontend.yaml || true
                     docker rmi -f group16-frontend:latest || true
-                    docker build --no-cache -t group16-frontend:latest .
+                    docker build -t group16-frontend:latest .
                     kubectl apply -f deployment_frontend.yaml ||true
                     '''
                 }
