@@ -79,7 +79,7 @@ export default {
 				},
 			];
 
-      axios.get('http://mall-service:8888/products/all').then((res) => {
+      axios.get('http://localhost:30001/products/all').then((res) => {
         console.log((res));
       }).catch(err => {
         console.error(err);
